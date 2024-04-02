@@ -1,0 +1,99 @@
+[
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "search",
+        "importPath": "googlesearch",
+        "description": "googlesearch",
+        "isExtraImport": true,
+        "detail": "googlesearch",
+        "documentation": {}
+    },
+    {
+        "label": "extend_top_track_schools",
+        "kind": 2,
+        "importPath": "Untitled",
+        "description": "Untitled",
+        "peekOfCode": "def extend_top_track_schools(schools):\n    \"\"\"\n    Extend the list of top track schools in the NCAA to the top 200.\n    Parameters:\n    schools (list of dicts): List of dictionaries containing school names and states.\n    Returns:\n    list of dicts: Extended list of top track schools in the NCAA.\n    \"\"\"\n    # 3. Placeholder for the extended list\n    extended_schools = [",
+        "detail": "Untitled",
+        "documentation": {}
+    },
+    {
+        "label": "parse_athlete_performance",
+        "kind": 2,
+        "importPath": "Untitled",
+        "description": "Untitled",
+        "peekOfCode": "def parse_athlete_performance(html_content, team):\n    \"\"\"Parses HTML content to extract athlete performance details\n    Parameters:\n    - html_content (str): HTML content of the web page\n    - team (str): The name of the team to include in the performance details\n    Returns:\n    - List[Dict]: A list of dictionaries where each dictionary contains performance details of an athlete \"\"\"\n    soup = BeautifulSoup(html_content, 'html.parser')\n    performances = []\n    table = soup.find('table', {'class': 'tablesaw'})",
+        "detail": "Untitled",
+        "documentation": {}
+    },
+    {
+        "label": "search_google",
+        "kind": 2,
+        "importPath": "Untitled",
+        "description": "Untitled",
+        "peekOfCode": "def search_google(query):\n    \"\"\"Search Google and return the top website\n    Parameters:\n    query (str): The search query\n    Returns:\n    str: The URL of the top website from the search results \"\"\"\n    search_results = search(query, num=1, stop=1, pause=2)\n    top_website = next(search_results, None)\n    return top_website\n# standard formatting of links in tfrrs",
+        "detail": "Untitled",
+        "documentation": {}
+    },
+    {
+        "label": "extended_schools_list",
+        "kind": 5,
+        "importPath": "Untitled",
+        "description": "Untitled",
+        "peekOfCode": "extended_schools_list = extend_top_track_schools(schools)\nimport requests\nfrom bs4 import BeautifulSoup\nimport pandas as pd\nfrom googlesearch import search\ndef parse_athlete_performance(html_content, team):\n    \"\"\"Parses HTML content to extract athlete performance details\n    Parameters:\n    - html_content (str): HTML content of the web page\n    - team (str): The name of the team to include in the performance details",
+        "detail": "Untitled",
+        "documentation": {}
+    },
+    {
+        "label": "all_performances",
+        "kind": 5,
+        "importPath": "Untitled",
+        "description": "Untitled",
+        "peekOfCode": "all_performances = []\ndef search_google(query):\n    \"\"\"Search Google and return the top website\n    Parameters:\n    query (str): The search query\n    Returns:\n    str: The URL of the top website from the search results \"\"\"\n    search_results = search(query, num=1, stop=1, pause=2)\n    top_website = next(search_results, None)\n    return top_website",
+        "detail": "Untitled",
+        "documentation": {}
+    },
+    {
+        "label": "base_url",
+        "kind": 5,
+        "importPath": "Untitled",
+        "description": "Untitled",
+        "peekOfCode": "base_url = 'https://www.tfrrs.org/teams/tf/{state}_college_{gender}_{school}.html'\n# Add a 'URLs' key to each school with an empty list to store multiple URLs\nfor school in extended_schools_list:\n    school['URLs'] = []\n# loop through each school and gender to fetch and parse performances\nfor school in extended_schools_list:\n    for gender in ['m', 'f']:\n        team_name = f\"{school['Name']} ({'Men' if gender == 'm' else 'Women'})\"\n        url = base_url.format(state=school['State'], gender=gender, school=school['Name'].replace(' ', '_'))\n        response = requests.get(url)",
+        "detail": "Untitled",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "Untitled",
+        "description": "Untitled",
+        "peekOfCode": "df = pd.DataFrame(all_performances)\ndf",
+        "detail": "Untitled",
+        "documentation": {}
+    }
+]
